@@ -1,0 +1,46 @@
+# arbsantos's GMMK Pro ISO layout
+
+- Changed R-Alt to FN1, FN1 to R-Win, R-Ctrl to FN2 and End to Home
+- Highlight "active" keys on the FN1 layer
+- Capslock indicator on the key LED
+- RGB timeout of 5 min
+- Disable RGB when USB is suspend (for motherboards that have USB power when the PC is off)
+- Rules.mk
+  - NO VIA SUPPORT as it prevents the layers from working properly
+  - Debounce type: [asymmetric eager per key](https://www.reddit.com/r/glorious/comments/qidnto/the_best_way_to_fix_gmmk_pro_input_latency_with/)
+- FN1 layer
+  - Media controls on F1-F4
+  - E - Open 'My PC'on windows
+  - C - inputs 'ç'
+  - Home - inputs End
+- FN2 (RGB OPTIONS)
+  - Space - Toggle RGB on/off
+  - Arrow up - Next RGB mode
+  - Arrow down - Previous RGB mode
+  - Arrow left - Increase speed
+  - Arrow right - Decrease speed
+  - P - Plain mode
+  - B - Breath mode
+  - R - Rainbow mode (depends on the color select, does not work on all)
+  - I - Swirl mode (depends on the color select, does not work on all)
+  - O - Snake mode (does not work)
+  - K - Knight rider mode (does not work)
+  - X - Xmas mode (does not work)
+  - Q - Increase hue
+  - A - Decrease hue
+  - W - Increase saturation
+  - S - Decrease saturation
+  - E - Increase value
+  - D - Decrease value
+  - < > - Cycle between all QMK HSV colors
+  - Keys 1-0 assign a specific color if Plain mode is select
+    - 1 - WHITE
+    - 2 - RED
+    - 3 - BLUE
+    - 4 - GREEN
+    - 5 - ORANGE
+    - 6 - TURQUOISE
+    - 7 - PURPLE
+    - 8 - YELLOW
+    - 9 - CORAL
+    - 0 - AZURE
