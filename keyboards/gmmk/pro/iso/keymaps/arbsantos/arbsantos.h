@@ -23,6 +23,8 @@ struct RGB {
 
 // Macro Declarations
 enum macros{
+    TIL_A,
+    TIL_O,
     ACCENT_C,
     NXT_COLOR,
     PRV_COLOR,

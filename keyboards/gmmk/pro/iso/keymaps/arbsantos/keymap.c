@@ -21,7 +21,7 @@
 #include "arbsantos.h"
 
 /*
- * ______ _____ ______   _____ _____ _   _ ___________ _____ _      _      ___________
+ * ______ _____ ______   _____ _____ _   _ KC_TRNS____ _____ _      _      KC_TRNS____
  * | ___ \  __ \| ___ \ /  __ \  _  | \ | |_   _| ___ \  _  | |    | |    |  ___| ___ \
  * | |_/ / |  \/| |_/ / | /  \/ | | |  \| | | | | |_/ / | | | |    | |    | |__ | |_/ /
  * |    /| | __ | ___ \ | |   | | | | . ` | | | |    /| | | | |    | |    |  __||    /
@@ -159,10 +159,21 @@ const macro_t *action_get_macro(keyrecord_t *record, uint8_t id, uint8_t opt){
   switch(id) {
     case ACCENT_C:
       if (record->event.pressed) {
-          register_code(KC_QUOT);
-          unregister_code(KC_QUOT);
-          register_code(KC_C);
-          unregister_code(KC_C);
+          SEND_STRING("'c");
+          return false;
+      }
+      break;
+
+    case TIL_A:
+      if (record->event.pressed) {
+          SEND_STRING("~a");
+          return false;
+      }
+      break;
+
+    case TIL_O:
+      if (record->event.pressed) {
+          SEND_STRING("~o");
           return false;
       }
       break;
@@ -291,30 +302,30 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //      Ct_L     Win_L    Alt_L                               SPACE                               Alt_R    FN       Ct_R     Left     Down     Right
 
     [_BASE] = LAYOUT(
-        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,  KC_F12,        KC_PSCR,          KC_MUTE,
-        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS, KC_EQL,        KC_BSPC,          KC_DEL,
-        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_LBRC, KC_RBRC,                         KC_PGUP,
-        KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_QUOT, KC_NUHS,       KC_ENT,           KC_PGDN,
-        KC_LSFT, KC_NUBS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,                KC_RSFT, KC_UP,   KC_HOME,
-        KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             MO(_FN1), KC_RGUI, MO(_RGB_OPTS), KC_LEFT, KC_DOWN, KC_RGHT
+        KC_ESC,  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,   KC_F11,   KC_F12,        KC_DEL,           KC_MUTE,
+        KC_GRV,  KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,     KC_MINS,  KC_EQL,        KC_BSPC,          KC_MPLY,
+        KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,     KC_LBRC,  KC_RBRC,                         KC_MNXT,
+        KC_CAPS, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN,  KC_QUOT,  KC_NUHS,       KC_ENT,           KC_MPRV,
+        KC_LSFT, KC_NUBS, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,   KC_SLSH,                 KC_RSFT, KC_UP,   KC_HOME,
+        KC_LCTL, KC_LGUI, KC_LALT,                            KC_SPC,                             MO(_FN1), MO(_FN1), MO(_RGB_OPTS), KC_LEFT, KC_DOWN, KC_RGHT
     ),
 
     [_FN1] = LAYOUT(
-        _______, KC_MPLY, KC_MPRV, KC_MNXT, KC_MSTP, _______, _______, _______, _______, _______, _______, _______, _______,       _______,              _______,
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,       RESET,                _______,
-        _______, _______, _______, KC_MYCM, _______,     _______, _______, _______, _______, _______, _______, _______, _______,                         _______,
-        _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, _______, _______,       _______,          _______,
-        _______, _______, _______, _______, M(ACCENT_C), _______, _______, NK_TOGG, _______, _______, _______, _______,                _______, RGB_MOD, KC_END,
-        _______, _______, _______,                                _______,                            KC_TRNS, _______, KC_TRNS,       RGB_SPD, RGB_RMOD, RGB_SPI
+        KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_PSCR, KC_INS,            KC_TRNS,
+        KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, RESET,             KC_HOME,
+        KC_TRNS, KC_TRNS,  KC_TRNS, KC_MYCM, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, M(TIL_O), KC_TRNS, KC_TRNS, KC_TRNS,                    KC_PGUP,
+        KC_TRNS, M(TIL_A), KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,           KC_PGDN,
+        KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, M(ACCENT_C), KC_TRNS, KC_TRNS, NK_TOGG, KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS,          KC_TRNS, RGB_MOD,  KC_END,
+        KC_TRNS, KC_TRNS,  KC_TRNS,                                KC_TRNS,                             KC_TRNS, KC_TRNS, KC_TRNS, RGB_SPD, RGB_RMOD, RGB_SPI
     ),
 
     [_RGB_OPTS] = LAYOUT(
-        _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,             _______,
-        _______, M(WHITE), M(RED), M(BLUE), M(GREEN), M(ORANGE), M(TURQUOISE), M(PURPLE), M(YELLOW), M(CORAL), M(AZURE), _______, _______, RESET, _______,
-        _______, RGB_HUI, RGB_SAI, RGB_VAI, RGB_M_R, _______, _______, _______, RGB_M_SW, RGB_M_SN, RGB_M_P, _______, _______,                    _______,
-        _______, RGB_HUD, RGB_SAD, RGB_VAD, _______, RGB_M_G, _______, _______, RGB_M_K, _______, _______, _______, _______, _______,             _______,
-        _______, RGB_M_T, _______, RGB_M_X, _______, _______, RGB_M_B, _______, _______, M(PRV_COLOR), M(NXT_COLOR), _______, _______,   RGB_MOD, KC_END,
-        _______, _______, _______,                            RGB_TOG,                            KC_TRNS , _______, KC_TRNS , RGB_SPD, RGB_RMOD, RGB_SPI
+        KC_TRNS, KC_TRNS,  KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,   KC_TRNS,      KC_TRNS,   KC_TRNS,   KC_TRNS,      KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,
+        KC_TRNS, M(WHITE), M(RED),  M(BLUE), M(GREEN), M(ORANGE), M(TURQUOISE), M(PURPLE), M(YELLOW), M(CORAL),     M(AZURE),     KC_TRNS, KC_TRNS, RESET,    KC_TRNS,
+        KC_TRNS, RGB_HUI,  RGB_SAI, RGB_VAI, RGB_M_R,  KC_TRNS,   KC_TRNS,      KC_TRNS,   RGB_M_SW,  RGB_M_SN,     RGB_M_P,      KC_TRNS, KC_TRNS,           KC_TRNS,
+        KC_TRNS, RGB_HUD,  RGB_SAD, RGB_VAD, KC_TRNS,  RGB_M_G,   KC_TRNS,      KC_TRNS,   RGB_M_K,   KC_TRNS,      KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS,  KC_TRNS,
+        KC_TRNS, RGB_M_T,  KC_TRNS, RGB_M_X, KC_TRNS,  KC_TRNS,   RGB_M_B,      KC_TRNS,   KC_TRNS,   M(PRV_COLOR), M(NXT_COLOR), KC_TRNS, KC_TRNS, RGB_MOD,  KC_END,
+        KC_TRNS, KC_TRNS,  KC_TRNS,                               RGB_TOG,                            KC_TRNS ,     KC_TRNS,      KC_TRNS, RGB_SPD, RGB_RMOD, RGB_SPI
     ),
 
 };

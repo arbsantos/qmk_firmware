@@ -143,8 +143,10 @@
         LED_SPC, LED_LEFT, LED_RIGHT, LED_UP, LED_DOWN};
 
     const uint8_t LED_LIST_FN[] = {
-        LED_F1, LED_F2, LED_F3 ,LED_F4,
-        LED_E,
+        LED_F12, LED_PRT,
+        LED_DEL,
+        LED_E, LED_O, LED_PGUP,
+        LED_A, LED_PGDN,
         LED_C, LED_N, LED_END};
 
 #endif
