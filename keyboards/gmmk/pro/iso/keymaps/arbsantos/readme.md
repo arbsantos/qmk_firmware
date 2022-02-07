@@ -1,18 +1,32 @@
 # arbsantos's GMMK Pro ISO layout
 
-- Changed R-Alt to FN1, FN1 to R-Win, R-Ctrl to FN2 and End to Home
 - Highlight "active" keys on the FN1 layer
-- Capslock indicator on the key LED
+- CapsLock indicator on the key LED
 - RGB timeout of 5 min
-- Disable RGB when USB is suspend (for motherboards that have USB power when the PC is off)
+  - Disable RGB when USB is suspend (for motherboards that have USB power when the PC is off)
 - Rules.mk
   - NO VIA SUPPORT as it prevents the layers from working properly
   - Debounce type: [asymmetric eager per key](https://www.reddit.com/r/glorious/comments/qidnto/the_best_way_to_fix_gmmk_pro_input_latency_with/)
+- Main layer
+  - Del - Media Play/Pause
+  - PgUp - Media Next
+  - PgDn - Media Previous
+  - PrtScr - Delete
+  - R-Alt - FN1
+  - R-Win - FN1
+  - R-Ctrl - FN2
+
 - FN1 layer
-  - Media controls on F1-F4
-  - E - Open 'My PC'on windows
+  - E - Open 'My PC' on windows
   - C - inputs 'ç'
-  - Home - inputs End
+  - A - inputs 'ã'
+  - O - inputs 'õ'
+  - Del - Home
+  - PgUp - Page Up
+  - PgDn - Page Down
+  - PrtScr - Insert
+  - F12 - Print Screen
+
 - FN2 (RGB OPTIONS)
   - Space - Toggle RGB on/off
   - Arrow up - Next RGB mode
